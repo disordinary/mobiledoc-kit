@@ -38,6 +38,8 @@ import MobiledocError from 'mobiledoc-kit/utils/mobiledoc-error';
 // for consumers that may depend on it.
 export { EDITOR_ELEMENT_CLASS_NAME } from 'mobiledoc-kit/renderers/editor-dom';
 
+import { CARD_ELEMENT_CLASS_NAME, ATOM_CLASS_NAME, EDITOR_HAS_NO_CONTENT_CLASS_NAME } from 'mobiledoc-kit/renderers/editor-dom';
+
 const defaults = {
   placeholder: 'Write here...',
   spellcheck: true,
@@ -54,7 +56,11 @@ const defaults = {
     throw new MobiledocError(`Unknown atom encountered: ${env.name}`);
   },
   mobiledoc: null,
-  html: null
+  html: null,
+  editorElementClassName: EDITOR_ELEMENT_CLASS_NAME,
+  cardElementClassName: CARD_ELEMENT_CLASS_NAME,
+  atomClassName: ATOM_CLASS_NAME,
+  editorHasNoContentClassName: EDITOR_HAS_NO_CONTENT_CLASS_NAME
 };
 
 const CALLBACK_QUEUES = {
@@ -123,6 +129,7 @@ class Editor {
     this._parserPlugins = options.parserPlugins || [];
 
     // FIXME: This should merge onto this.options
+    
     mergeWithOptions(this, defaults, options);
     this.cards.push(ImageCard);
 
