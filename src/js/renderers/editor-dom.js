@@ -110,8 +110,10 @@ function renderInlineCursorPlaceholder() {
 function renderCard() {
   let wrapper = document.createElement('div');
   let cardElement = document.createElement('div');
+  let { options } = this;
+  console.log('rcard options', options);
   cardElement.contentEditable = false;
-  addClassName(cardElement, CARD_ELEMENT_CLASS_NAME);
+  addClassName(cardElement, options.cardElementClassName || CARD_ELEMENT_CLASS_NAME);
   wrapper.appendChild(renderInlineCursorPlaceholder());
   wrapper.appendChild(cardElement);
   wrapper.appendChild(renderInlineCursorPlaceholder());
@@ -154,7 +156,9 @@ function renderAtom(atom, element, previousRenderNode) {
   atomElement.contentEditable = false;
 
   let wrapper = document.createElement('span');
-  addClassName(wrapper, ATOM_CLASS_NAME);
+  let {options} = this;
+  console.log("render atom", options);
+  addClassName(wrapper, options.atomClassName || ATOM_CLASS_NAME);
   let headTextNode = renderInlineCursorPlaceholder();
   let tailTextNode = renderInlineCursorPlaceholder();
 
@@ -320,11 +324,13 @@ class Visitor {
     if (!renderNode.element) {
       renderNode.element = document.createElement('div');
     }
-    addClassName(renderNode.element, EDITOR_ELEMENT_CLASS_NAME);
+    let = {options} = this;
+    console.log(options);
+    addClassName(renderNode.element, options.editorClassName || EDITOR_ELEMENT_CLASS_NAME);
     if (post.hasContent) {
-      removeClassName(renderNode.element, EDITOR_HAS_NO_CONTENT_CLASS_NAME);
+      removeClassName(renderNode.element, options.editorNoContentClassName || EDITOR_HAS_NO_CONTENT_CLASS_NAME);
     } else {
-      addClassName(renderNode.element, EDITOR_HAS_NO_CONTENT_CLASS_NAME);
+      addClassName(renderNode.element, options.editorNoContentClassName || EDITOR_HAS_NO_CONTENT_CLASS_NAME);
     }
     visit(renderNode, post.sections);
   }

@@ -71,12 +71,13 @@ function trim(str) {
 
 function walkMarkerableNodes(parent, callback) {
   let currentNode = parent;
-
+  let { options } = this;
+  console.log("WMN", options);
   if (
     isTextNode(currentNode) ||
     (
       isElementNode(currentNode) &&
-      currentNode.classList.contains(ATOM_CLASS_NAME)
+      currentNode.classList.contains(options.atomClassName || ATOM_CLASS_NAME)
     )
   ) {
     callback(currentNode);
