@@ -11,6 +11,12 @@ const cards = [{
   edit() {}
 }];
 
+const atoms = [{
+  name: 'my-atom',
+  type: 'dom',
+  render() {}
+}];
+
 let editor, editorElement;
 
 module('Acceptance: editor: basic', {
@@ -224,3 +230,28 @@ test('prevent handling newline', (assert) => {
   Helpers.dom.insertText(editor, ENTER);
   assert.postIsSimilar(editor.post, expected);
 });
+// test('custom wrapper classes', (assert) => {
+//   editor = Helpers.editor.buildFromText('[abc,@("name":"my-atom","value":"abc","payload":{}),def,[my-card]]', {element: editorElement, cards, atoms});
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('>>>>>>>>>>>>>>>',$('#editor')[0]);
+//    console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+//   console.log('*********************************');
+  
+// });

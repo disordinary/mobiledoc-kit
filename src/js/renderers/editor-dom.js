@@ -107,12 +107,12 @@ function renderInlineCursorPlaceholder() {
   return document.createTextNode(ZWNJ);
 }
 
-function renderCard() {
+function renderCard(editor) {
   let wrapper = document.createElement('div');
   let cardElement = document.createElement('div');
   
   cardElement.contentEditable = false;
-  addClassName(cardElement, this.cardElementClassName);
+  addClassName(cardElement, editor.cardElementClassName);
   wrapper.appendChild(renderInlineCursorPlaceholder());
   wrapper.appendChild(cardElement);
   wrapper.appendChild(renderInlineCursorPlaceholder());
@@ -322,7 +322,7 @@ class Visitor {
     if (!renderNode.element) {
       renderNode.element = document.createElement('div');
     }
-
+    console.log(post, this, 'editoRelementclassname this.');
     addClassName(renderNode.element, this.editorElementClassName);
     if (post.hasContent) {
       removeClassName(renderNode.element, this.editorHasNoContentClassName);
@@ -421,6 +421,7 @@ class Visitor {
 
     const card = this._findCard(section.name);
 
+    console.log(this);
     let { wrapper, cardElement } = renderCard();
     renderNode.element = wrapper;
     attachRenderNodeElementToDOM(renderNode, originalElement);

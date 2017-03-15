@@ -38,7 +38,9 @@ import MobiledocError from 'mobiledoc-kit/utils/mobiledoc-error';
 // for consumers that may depend on it.
 export { EDITOR_ELEMENT_CLASS_NAME } from 'mobiledoc-kit/renderers/editor-dom';
 
-import { CARD_ELEMENT_CLASS_NAME, ATOM_CLASS_NAME, EDITOR_HAS_NO_CONTENT_CLASS_NAME } from 'mobiledoc-kit/renderers/editor-dom';
+// It's odd to keep theses constants in editor-dom, 
+// this is just in case they're imported in the cients, consider removing for 1.0.
+import { EDITOR_ELEMENT_CLASS_NAME, CARD_ELEMENT_CLASS_NAME, ATOM_CLASS_NAME, EDITOR_HAS_NO_CONTENT_CLASS_NAME } from 'mobiledoc-kit/renderers/editor-dom';
 
 const defaults = {
   placeholder: 'Write here...',
@@ -57,6 +59,7 @@ const defaults = {
   },
   mobiledoc: null,
   html: null,
+  // class names for the editor and card wrapper elements.
   editorElementClassName: EDITOR_ELEMENT_CLASS_NAME,
   cardElementClassName: CARD_ELEMENT_CLASS_NAME,
   atomClassName: ATOM_CLASS_NAME,

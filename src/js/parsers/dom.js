@@ -1,7 +1,6 @@
 import {
   NO_BREAK_SPACE,
-  TAB_CHARACTER,
-  ATOM_CLASS_NAME
+  TAB_CHARACTER
 } from '../renderers/editor-dom';
 import {
   MARKUP_SECTION_TYPE,
